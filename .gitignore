@@ -10,3 +10,4 @@ gen-external-apklibs
 HelloMoon-Application.iml
 target
 HelloMoon-it.iml
+/.idea/uiDesigner.xml
