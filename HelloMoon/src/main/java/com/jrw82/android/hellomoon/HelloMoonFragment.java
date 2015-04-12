@@ -11,7 +11,7 @@ import android.widget.Button;
  * Created by johnsonrw82 on 4/11/2015.
  */
 public class HelloMoonFragment extends Fragment {
-    AudioPlayer mAudioPlayer = new AudioPlayer();
+    private AudioPlayer mAudioPlayer = new AudioPlayer();
 
     private Button mPlayButton;
     private Button mStopButton;
@@ -24,6 +24,14 @@ public class HelloMoonFragment extends Fragment {
         mPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // if the player is playing, change text of the button
+                if (!mAudioPlayer.isPlaying()) {
+                    mPlayButton.setText(R.string.hellomoon_pause);
+                }
+                else {
+                    mPlayButton.setText(R.string.hellomoon_play);
+                }
+                // request play operation
                 mAudioPlayer.play(getActivity());
             }
         });
@@ -33,6 +41,7 @@ public class HelloMoonFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mAudioPlayer.stop();
+                mPlayButton.setText(R.string.hellomoon_play);
             }
         });
 
