@@ -11,3 +11,4 @@ HelloMoon-Application.iml
 target
 HelloMoon-it.iml
 /.idea/uiDesigner.xml
+/HelloMoon/src/main/res/raw/apollo_17_stroll.mpg

@@ -22,5 +22,13 @@
                 android:layout_width="wrap_content"
                 android:text="@string/hellomoon_stop"/>
     </TableRow>
+    <TableRow
+            android:gravity="center|bottom"
+            android:layout_weight="0">
+        <Button android:id="@+id/hellomoon_playVideoButton"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/hellomoon_playVideo"/>
+    </TableRow>
 
 </TableLayout>

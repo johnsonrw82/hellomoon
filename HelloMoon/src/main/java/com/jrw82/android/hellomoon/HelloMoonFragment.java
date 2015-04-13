@@ -1,5 +1,7 @@
 package com.jrw82.android.hellomoon;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,6 +17,7 @@ public class HelloMoonFragment extends Fragment {
 
     private Button mPlayButton;
     private Button mStopButton;
+    private Button mVideoButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -40,12 +43,29 @@ public class HelloMoonFragment extends Fragment {
         mStopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAudioPlayer.stop();
-                mPlayButton.setText(R.string.hellomoon_play);
+                stopAudio();
+            }
+        });
+
+        mVideoButton = (Button) v.findViewById(R.id.hellomoon_playVideoButton);
+        mVideoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // start the activity when the button is clicked
+                Intent i = new Intent(getActivity(), VideoPlayerActivity.class);
+                // pass in the uri of the video resource
+                i.putExtra(VideoViewFragment.EXTRA_VIDEO_URI, Uri.parse("android.resource://com.jrw82.android.hellomoon/" + R.raw.apollo_stroll_3gp ));
+                // start the activity
+                startActivity(i);
             }
         });
 
         return v;
+    }
+
+    private void stopAudio() {
+        mAudioPlayer.stop();
+        mPlayButton.setText(R.string.hellomoon_play);
     }
 
     // stop the player when the fragment is destroyed
